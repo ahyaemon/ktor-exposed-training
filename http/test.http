@@ -1,0 +1,59 @@
+### hello world
+GET http://localhost:18080
+Accept: application/json
+
+
+### create user
+POST http://localhost:18080/users
+Content-Type: application/json
+
+{
+  "company": {
+    "corporateName": "テスト企業",
+    "representativeName": "テスト代表",
+    "phoneNumber": "080-0000-1111",
+    "postCode": "000-2345",
+    "address": "東京都"
+  },
+  "user": {
+    "name": "テストマン",
+    "mailAddress": "test@example.com",
+    "password": "password-string"
+  }
+}
+
+
+### login
+POST http://localhost:18080/users/login
+Content-Type: application/json
+
+{
+  "mailAddress": "test@example.com",
+  "password": "password-string"
+}
+
+
+### test hello world auth
+GET http://localhost:18080/auth
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDoxODA4MCIsImlzcyI6Imh0dHA6Ly8wLjAuMC4wOjE4MDgwIiwidXNlcklkIjoiMDFKMENUQVoxUEUwQVdRQjhWOVdLWEtaWTYiLCJleHAiOjE3MTg1ODAzNzR9.y8tLpCLJo_dSUeHNB8dQI5gQzVOGqTat2_M5ayRtC4Q
+Accept: application/json
+
+
+### create invoice
+POST http://localhost:18080/invoices
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDoxODA4MCIsImlzcyI6Imh0dHA6Ly8wLjAuMC4wOjE4MDgwIiwidXNlcklkIjoiMDFKMENUQVoxUEUwQVdRQjhWOVdLWEtaWTYiLCJleHAiOjE3MTg1OTMyOTJ9.3WLN5cRpDSJU6f6sQUVaJ44AxfKbtZlawlpXBXd_xhI
+
+{
+  "supplierId": "0000004JFGVCGQFKE4JWFTZ8QK",
+  "issuedDate": "2024-06-01",
+  "paymentDueDate": "2024-06-30",
+  "paymentAmount": 10000
+}
+
+
+### list invoices
+GET http://localhost:18080/invoices?dateFrom=2024-06-01&dateTo=2024-07-30&limit=2&offset=4
+Accept: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhdWQiOiJodHRwOi8vMC4wLjAuMDoxODA4MCIsImlzcyI6Imh0dHA6Ly8wLjAuMC4wOjE4MDgwIiwidXNlcklkIjoiMDFKMENUQVoxUEUwQVdRQjhWOVdLWEtaWTYiLCJleHAiOjE3MTg1OTQwODd9.vDsfS3DPWexQvK7epSL3KJV_ZpZw328pVofSxuuMnDI
+
